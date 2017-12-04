@@ -9,7 +9,8 @@ goes into building a submission based web page.
 - Add depth to webpage so that there are self-contained modules of separate documents
 ## Technologies Used
 - Web Server (Apache?)
-- Database (SQL?)
+- Database
+	- sqlite3 (http://sqlite.org/docs.html)
 ## Currently TODO:
 - Everything :)
 	- Try out Web Servers and which one would be best
