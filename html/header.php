@@ -16,8 +16,17 @@
         <a class="item" href="/forum/create_cat.php">Create a category</a>
 
         <div id="userbar">
-      <div id="userbar">Hello Test123. Not you? Log out.</div>
-      </div>
+      
+      <?php
+        <div id="userbar">
+          if ($_SESSION['signed_in']) {
+            echo 'Hello' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
+          }
+          else {
+            echo '<a href="signin.php">Sign in</a> or <a href="sign up">create an account</a>.';
+          }
+        </div>
+      ?>
       
       <div id="content">
       </div><!-- content -->
