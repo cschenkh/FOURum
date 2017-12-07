@@ -1,13 +1,15 @@
-<?php // connect.php
+<?php //connect.php
+  $server = 'localhost';
+  $username   = 'usernamehere';
+  $password   = 'passwordhere';
+  $database   = 'databasenamehere';
+ 
+  if(!mysql_connect($server, $username,  $password)) {
+    exit('Error: could not establish database connection');
+  }
 
-  $dir = 'sqlite:' . getcwd() . '/../FOURum.db';
-
-  $dbh = NULL;
-
-  try {
-    $dbh = new PDO($dir) or die('cannot open the db');
-  } catch (Exception $e) {
-    exit('Error: failed to connect to db');
+  if(!mysql_select_db($database) {
+    exit('Error: could not select the database');
   }
 
 ?>
