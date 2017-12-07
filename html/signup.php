@@ -63,9 +63,9 @@
       //also notice the sha1 function which hashes the password
       $sql = "INSERT INTO
           users(user_name, user_pass, user_email ,user_date, user_level)
-          VALUES('" . PDO::quote($_POST['user_name']) . "',
+          VALUES('" . $conn->quote($_POST['user_name']) . "',
           '" . sha1($_POST['user_pass']) . "',
-          '" . PDO::quote($_POST['user_email']) . "',
+          '" . $conn->quote($_POST['user_email']) . "',
           NOW(),
           0)";
 
@@ -77,9 +77,8 @@
         include 'footer.php';
         return;
       }
-      else {
-        echo 'Successfully registered. You can now <a href="signin.php">sign in</a> and start posting! :-)';
-      }
+
+      echo 'Successfully registered. You can now <a href="signin.php">sign in</a> and start posting! :-)';
     }
   }
 

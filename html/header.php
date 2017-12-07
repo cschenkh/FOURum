@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php 
+  session_start();  
+?>
+
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,7 +28,7 @@
             echo 'Hello' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
           }
           else {
-            echo '<a href="signin.php">Sign in</a> or <a href="sign up">create an account</a>.';
+            echo '<a href="signin.php">Sign in</a> or <a href="signup.php">create an account</a>.';
           }
         </div>
       ?>

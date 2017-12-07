@@ -54,7 +54,7 @@
                 FROM
                   users
                 WHERE
-                  user_name = '" . PDO::quote($_POST['user_name']) . "'
+                  user_name = '" . $conn->quote($_POST['user_name']) . "'
                   AND
                   user_pass = '" . sha1($_POST['user_pass']) . "'";
 
@@ -72,7 +72,7 @@
                   FROM
                     users
                   WHERE
-                    user_name = '" . PDO::quote($_POST['user_name']) . "'
+                    user_name = '" . $conn->quote($_POST['user_name']) . "'
                     AND
                     user_pass = '" . sha1($_POST['user_pass']) . "'";
           

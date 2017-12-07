@@ -19,7 +19,7 @@
                       post_by)
               VALUES ('" . $_POST['reply-content'] . "', 
                       NOW(), 
-                      " . PDO::quote($_GET['id']) . ", 
+                      " . $conn->quote($_GET['id']) . ", 
                       " . $_SESSION['user_id'] . ")";
 
       try {

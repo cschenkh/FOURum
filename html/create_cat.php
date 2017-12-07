@@ -12,8 +12,8 @@
   else {
     // The form HAS been posted so let's save it
     $sql = "INSERT INTO categories(cat_name, cat_description)
-              VALUES('', " . PDO::quote($_POST['cat_name']) . ", " . 
-                  PDO::quote($_POST['cat_description']) . ")";
+              VALUES('', " . $conn->quote($_POST['cat_name']) . ", " . 
+                  $conn->quote($_POST['cat_description']) . ")";
 
     try {
       $conn->exec($sql);

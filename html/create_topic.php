@@ -77,9 +77,9 @@
                          topic_date,
                          topic_cat,
                          topic_by)
-                  VALUES('" . PDO::quote($_POST['topic_subject']) . "', 
+                  VALUES('" . $conn->quote($_POST['topic_subject']) . "', 
                         NOW(),
-                        " . PDO::quote($_POST['topic_cat']) . ", 
+                        " . $conn->quote($_POST['topic_cat']) . ", 
                         " . $_SESSION['user_id'] . "
                       )";
         try {
@@ -103,7 +103,7 @@
                       post_topic,
                       post_by)
                 VALUES
-                  ('" . PDO::quote($_POST['post_content']) . "', 
+                  ('" . $conn->quote($_POST['post_content']) . "', 
                   NOW(),
                   " . $topicid . ", 
                   " . $_SESSION['user_id'] . "

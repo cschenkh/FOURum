@@ -9,7 +9,7 @@
           FROM
             categories
           WHERE
-            cat_id = " . PDO::quote($_GET['id']);
+            cat_id = " . $conn->quote($_GET['id']);
 
   // Check if query succeeds
   if ($res = $conn->query($sql)) {  
@@ -26,7 +26,7 @@
               FROM
                 categories
               WHERE
-                cat_id = " . PDO::quote($_GET['id']);
+                cat_id = " . $conn->quote($_GET['id']);
 
       // Iterate through the results and list them on the page as html
       foreach ($conn->query($sql) as $row) {
@@ -42,7 +42,7 @@
               FROM
                 topics
               WHERE
-                topic_cat = " . PDO::quote($_GET['id']);
+                topic_cat = " . $conn->quote($_GET['id']);
 
       // Execute prepared statement and see if it failed
       if (!($result = $conn->query($sql))) {
