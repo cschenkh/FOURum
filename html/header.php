@@ -23,8 +23,8 @@
         <div id="userbar">
       
         <?php
-          if ($_SESSION['signed_in']) {
-            echo 'Hello' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
+          if (isset($_SESSION['signed_in']) && $_SESSION['signed_in']) {
+            echo 'Hello ' . $_SESSION['user_name'] . '. Not you? <a href="signout.php">Sign out</a>';
           }
           else {
             echo '<a href="signin.php">Sign in</a> or <a href="signup.php">create an account</a>.';
@@ -33,14 +33,3 @@
         
         </div>
 
-
-<?php
-  $error = false;
-  if($error = false) {
-    //the beautifully styled content, everything looks good
-    echo '<div id="content">some text</div>';
-  }
-  else {
-    //bad looking, unstyled error :-( 
-  } 
-?>
