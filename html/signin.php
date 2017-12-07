@@ -54,9 +54,9 @@
                 FROM
                   users
                 WHERE
-                  user_name = '" . $conn->quote($_POST['user_name']) . "'
+                  user_name = " . $conn->quote($_POST['user_name']) . "
                   AND
-                  user_pass = '" . sha1($_POST['user_pass']) . "'";
+                  user_pass = \"" . sha1($_POST['user_pass']) . "\"";
 
         $result = $conn->query($sql);
         if(!$result) {
@@ -72,9 +72,9 @@
                   FROM
                     users
                   WHERE
-                    user_name = '" . $conn->quote($_POST['user_name']) . "'
+                    user_name = " . $conn->quote($_POST['user_name']) . "
                     AND
-                    user_pass = '" . sha1($_POST['user_pass']) . "'";
+                    user_pass = \"" . sha1($_POST['user_pass']) . "\"";
           
           if($resNumRows = $conn->query($sqlNumRows)) {
             if ($resNumRows->fetchColumn() <= 0) {
