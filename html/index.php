@@ -3,23 +3,28 @@
   include 'connect.php';
   include 'header.php';
 
-  $sql = "SELECT
-      cat_id,
-      cat_name,
-      cat_description,
-      FROM
-      categories";
+  $sqlNumFound = "SELECT
+                    COUNT(*)
+                  FROM
+                    categories";
 
-  $result = mysql_query($sql);
-
-  if(!$result) {
+  if(!($numResults = $conn->query($sqlNumFound))) {
     echo 'The categories could not be displayed, please try again later.';
   }
   else {
-    if(mysql_num_rows($result) == 0) {
+    if($numResults->fetchColumn() <= 0) {
       echo 'No categories defined yet.';
     }
     else {
+      $sql = "SELECT
+                cat_id,
+                cat_name,
+                cat_description,
+              FROM
+                categories";
+
+      $result = $conn->query($sql);
+
       //prepare the table
       echo '<table border="1">
           <tr>
@@ -27,7 +32,7 @@
           <th>Last topic</th>
           </tr>'; 
 
-      while($row = mysql_fetch_assoc($result)) {
+      foreach ($result as $row) {
         echo '<tr>';
         echo '<td class="leftpart">';
         echo '<h3><a href="category.php?id">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];

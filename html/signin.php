@@ -1,7 +1,6 @@
-<?php
-//signin.php
-include 'connect.php';
-include 'header.php';
+<?php //signin.php
+  include 'connect.php';
+  include 'header.php';
 
   echo '<h3>Sign in</h3>';
 
@@ -49,46 +48,57 @@ include 'header.php';
         //notice the use of mysql_real_escape_string, keep everything safe!
         //also notice the sha1 function which hashes the password
         $sql = "SELECT 
-            user_id,
-            user_name,
-            user_level
-            FROM
-            users
-            WHERE
-            user_name = '" . mysql_real_escape_string($_POST['user_name']) . "'
-            AND
-            user_pass = '" . sha1($_POST['user_pass']) . "'";
+                  user_id,
+                  user_name,
+                  user_level
+                FROM
+                  users
+                WHERE
+                  user_name = '" . PDO::quote($_POST['user_name']) . "'
+                  AND
+                  user_pass = '" . sha1($_POST['user_pass']) . "'";
 
-        $result = mysql_query($sql);
+        $result = $conn->query($sql);
         if(!$result) {
-          //something went wrong, display the error
           echo 'Something went wrong while signing in. Please try again later.';
-          //echo mysql_error(); //debugging purposes, uncomment when needed
         }
         else {
           //the query was successfully executed, there are 2 possibilities
           //1. the query returned data, the user can be signed in
           //2. the query returned an empty result set, the credentials were wrong
-          if(mysql_num_rows($result) == 0) {
-            echo 'You have supplied a wrong user/password combination. Please try again.';
-          }  
-          else {
-            //set the $_SESSION['signed_in'] variable to TRUE
-            $_SESSION['signed_in'] = true;
 
-            //we also put the user_id and user_name values in the $_SESSION, so we can use it at various pages
-            while($row = mysql_fetch_assoc($result)) {
-              $_SESSION['user_id']    = $row['user_id'];
-              $_SESSION['user_name']  = $row['user_name'];
-              $_SESSION['user_level'] = $row['user_level'];
+          $sqlNumRows = "SELECT
+                    COUNT(*)
+                  FROM
+                    users
+                  WHERE
+                    user_name = '" . PDO::quote($_POST['user_name']) . "'
+                    AND
+                    user_pass = '" . sha1($_POST['user_pass']) . "'";
+          
+          if($resNumRows = $conn->query($sqlNumRows)) {
+            if ($resNumRows->fetchColumn() <= 0) {
+              echo 'You have supplied a wrong user/password combination. Please try again.';
+            }  
+            else {
+              //set the $_SESSION['signed_in'] variable to TRUE
+              $_SESSION['signed_in'] = true;
+
+              //we also put the user_id and user_name values in the $_SESSION, so we can use it at various pages
+              foreach ($result as $row) {
+                $_SESSION['user_id']    = $row['user_id'];
+                $_SESSION['user_name']  = $row['user_name'];
+                $_SESSION['user_level'] = $row['user_level'];
+              }
+
+              echo 'Welcome, ' . $_SESSION['user_name'] . '. <a href="index.php">Proceed to the forum overview</a>.';
+            
+            }
           }
-
-          echo 'Welcome, ' . $_SESSION['user_name'] . '. <a href="index.php">Proceed to the forum overview</a>.';
         }
       }
     }
   }
-}
 
-include 'footer.php';
+  include 'footer.php';
 ?>

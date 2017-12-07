@@ -1,5 +1,4 @@
-<?php 
-
+<?php // create_topic.php
   include 'connect.php';
   include 'header.php';
 
@@ -20,16 +19,21 @@
               FROM
                 categories";
 
-      $result = mysql_query($sql);
+      $sqlNumResults = "SELECT
+                          COUNT(*)
+                        FROM
+                          categories";
 
-      if (!$result) {
+      $numResults = $conn->query($sqlNumResults);
+
+      if (!$numResults) {
         // the query failed
         echo 'Error while selecting from database. Please try again later.';
       }
       else {
-        if (myswl_num_rows($result) == 0) {
+        if ($numResults->fetchColumn() <= 0) {
           // there are no categories, so topic can't be posted
-          if ($_SESSION['user_lecel'] == 1) {
+          if ($_SESSION['user_level'] == 1) {
             echo 'You have not created categories yet.';
           }
           else {
@@ -37,12 +41,14 @@
           }
         }
         else {
+          $result = $conn->query($sql);
+
           echo '<form method="post" action="">
                 Subject: <input type="text" name="topic_subject" />
                 Category:';
           echo '<select name="topic_cat">';
 
-          while ($row = mysql_fetch_assoc($result)) {
+          foreach ($result as $row) {
             echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
           }
 
@@ -57,7 +63,7 @@
     else {
       // start the transaction
       $query = "BEGIN WORK";
-      $result = mysql_query($query);
+      $result = $conn->query($query);
 
       if (!$result) {
         // The query failed, quit
@@ -71,48 +77,53 @@
                          topic_date,
                          topic_cat,
                          topic_by)
-                  VALUES('" . mysql_real_escape_string($_POST['topic_subject']) . "', 
+                  VALUES('" . PDO::quote($_POST['topic_subject']) . "', 
                         NOW(),
-                        " . mysql_real_escape_string($_POST['topic_cat']) . ", 
+                        " . PDO::quote($_POST['topic_cat']) . ", 
                         " . $_SESSION['user_id'] . "
                       )";
-        $result = mysql_query($sql);
-
-        if (!$result) {
+        try {
+          $conn->exec($sql);
+        } catch (PDOException $e) {
           // something went wrong, display the error
           echo 'An error occured while inserting your post. Please try again later. ' . mysql_error();
           
           $sql = "ROLLBACK;";
-          $result = mysql_query($sql);
-        }
-        else {
-          $topicid = mysql_insert_id();
+          $result = $conn->query($sql);
 
-          $sql = "INSET INTO
+          include 'footer.php';
+          return;
+        }
+        
+        $topicid = $conn->lastInsertId();
+
+        $sql = "INSET INTO
                 posts(post_content,
                       post_date,
                       post_topic,
                       post_by)
                 VALUES
-                  ('" . mysql_real_escape_string($_POST['post_content']) . "', 
+                  ('" . PDO::quote($_POST['post_content']) . "', 
                   NOW(),
                   " . $topicid . ", 
                   " . $_SESSION['user_id'] . "
                 )";
-          $result = mysql_query($sql);
 
-          if (!$result) {
-            echo 'An error occured while inserting your post. Try again later. ' . mysql_error();
-            $sql = "ROLLBACK;";
-            $result = mysql_query($sql);
-          }
-          else {
-            $sql = "COMMIT;";
-            $result = mysql_query($sql);
+        try {
+          $conn->exec($sql);
+        } catch (PDOException $e) {
+          echo 'An error occured while inserting your post. Try again later. ' . mysql_error();
+          $sql = "ROLLBACK;";
+          $result = $conn->query($sql);
 
-            echo 'You have successfully create <a href="topic.php"?id=' . $topicid . '">your new topic</a>.';
-          }
+          include 'footer.php';
+          return;
         }
+
+        $sql = "COMMIT;";
+        $result = $conn->query($sql);
+
+        echo 'You have successfully create <a href="topic.php"?id=' . $topicid . '">your new topic</a>.';
       }
     }
   }

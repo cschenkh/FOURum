@@ -1,15 +1,20 @@
 <?php //connect.php
   $server = 'localhost';
-  $username   = 'usernamehere';
-  $password   = 'passwordhere';
-  $database   = 'databasenamehere';
- 
-  if(!mysql_connect($server, $username,  $password)) {
-    exit('Error: could not establish database connection');
-  }
+  $username   = 'MyUserName';
+  $password   = 'SecurePassword';
+  $database   = 'db123';
 
-  if(!mysql_select_db($database) {
-    exit('Error: could not select the database');
+  try {
+    // Attempt the connection
+    $conn = new PDO("mysql:host=$server;dbname=$database", $username, $password);
+    
+    // configure the PDO error mode to throw exceptions
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected to database successfully!";
+  } catch (PDOException $e) {
+    // No need to do anything special but output the error
+    echo "Connection to database failed: " . $e->getMessage();
+    return;
   }
 
 ?>

@@ -5,30 +5,35 @@
 
   // first select category based on $_GET['cat_id']
   $sql = "SELECT
-            cat_id,
-            cat_name,
-            cat_description
+            COUNT(*)
           FROM
             categories
           WHERE
-            cat_id = " . mysql_real_escape_string($_GET['id']);
+            cat_id = " . PDO::quote($_GET['id']);
 
-  $result = mysql_query($sql);
-
-  if (!$result) {
-    echo 'The category could not be displayed, please try again later.' . mysql_error();
-  }
-  else {
-    if (mysql_num_rows($result) == 0) {
+  // Check if query succeeds
+  if ($res = $conn->query($sql)) {  
+    // Check if there aren't any columns representing the number of hits the SELECT statement would have found
+    if ($conn->fetchColumn() <= 0) {
       echo 'This category does not exist!';
     }
+    // Now that we know we have things we can select, make the real query
     else {
-      // display rows of category
-      while ($row = mysql_fetch_assoc($result)) {
+      $sql = "SELECT
+                cat_id,
+                cat_name,
+                cat_description
+              FROM
+                categories
+              WHERE
+                cat_id = " . PDO::quote($_GET['id']);
+
+      // Iterate through the results and list them on the page as html
+      foreach ($conn->query($sql) as $row) {
         echo '<h2>Topics in ' . $row['cat_name'] . ' category</h2>';
       }
 
-      // query for topics
+      // Now query for topics
       $sql = "SELECT
                 topic_id,
                 topic_subject,
@@ -37,11 +42,10 @@
               FROM
                 topics
               WHERE
-                topic_cat = " . mysql_real_escape_string($_GET['id']);
+                topic_cat = " . PDO::quote($_GET['id']);
 
-      $result = mysql_query($sql);
-
-      if (!$result) {
+      // Execute prepared statement and see if it failed
+      if (!($result = $conn->query($sql))) {
         echo 'The topics could not be displayed, please try again.';
       }
       else {
@@ -52,7 +56,7 @@
                 <th>Created at</th>
               </tr>';
 
-        while ($row = mysql_fetch_assoc($result)) {
+        foreach ($result as $row) {
           echo '<tr>';
           echo '<td class="leftpart">';
           echo '<h3><a href="topic.php?id=' . $row['topic_id'] . '">' . $row['topic_subject'] . '</a></h3>';

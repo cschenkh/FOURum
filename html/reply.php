@@ -19,17 +19,19 @@
                       post_by)
               VALUES ('" . $_POST['reply-content'] . "', 
                       NOW(), 
-                      " . mysql_real_escape_string($_GET['id']) . ", 
+                      " . PDO::quote($_GET['id']) . ", 
                       " . $_SESSION['user_id'] . ")";
 
-      $result = mysql_query($sql);
-
-      if (!$result) {
+      try {
+        $conn->exec($sql);
+      } catch (PDOException $e) {
         echo 'Your reply was not able to be submitted! Please try again later.';
+        
+        include 'footer.php';
+        return;
       }
-      else {
-        echo 'Your reply was submitted! See it <a href="topic.php>id=' . htmlentities($_GET['id']) . '">here</a>.';
-      }
+      
+      echo 'Your reply was submitted! See it <a href="topic.php>id=' . htmlentities($_GET['id']) . '">here</a>.';
     }
   }
 

@@ -21,3 +21,11 @@ goes into building a submission based web page.
 - Picked a name? (remove)
 ## Bugs / Misc Unplanned Features:
 - Nobody can say anything bad about my forum if it doesn't exist!
+
+## Planned Extra Features:
+#### Don't worry about this section. It is mostly personal fluff that would improve QOL, not functionality or usability
+- Automatically setup and configure database
+  - Currently must manually setup db beforehand
+  - Change to create everything from scratch upon installation / starting up the first time
+  - Reference: 'https://www.w3schools.com/php/php_mysql_create.asp'
+

@@ -63,17 +63,19 @@
       //also notice the sha1 function which hashes the password
       $sql = "INSERT INTO
           users(user_name, user_pass, user_email ,user_date, user_level)
-          VALUES('" . mysql_real_escape_string($_POST['user_name']) . "',
+          VALUES('" . PDO::quote($_POST['user_name']) . "',
           '" . sha1($_POST['user_pass']) . "',
-          '" . mysql_real_escape_string($_POST['user_email']) . "',
+          '" . PDO::quote($_POST['user_email']) . "',
           NOW(),
           0)";
 
-          $result = mysql_query($sql);
-      if(!$result) {
-        //something went wrong, display the error
+      try {
+        $conn->exec($sql);
+      } catch (PDOException $e) {
         echo 'Something went wrong while registering. Please try again later.';
-        //echo mysql_error(); //debugging purposes, uncomment when needed
+
+        include 'footer.php';
+        return;
       }
       else {
         echo 'Successfully registered. You can now <a href="signin.php">sign in</a> and start posting! :-)';
