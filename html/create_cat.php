@@ -23,7 +23,9 @@
       return;
     }
 
-    echo 'New category successfully added.';
+    $categoryId = $conn->lastInsertId();
+
+    echo '<script type="text/javascript>location.href = "/category.php?id=' . $categoryId . '";</script>';
   }
 
   include 'footer.php';

@@ -43,8 +43,8 @@
         else {
           $result = $conn->query($sql);
 
-          echo '<form method="post" action="">
-                Subject: <br><input type="text" name="topic_subject" /><br>
+          echo '<form class="createForm" method="post" action="">
+                Subject: <input class="regField" type="text" name="topic_subject" /><br>
                 Category:';
           echo '<select name="topic_cat">';
 
@@ -55,7 +55,7 @@
           echo '</select><br>';
 
           echo 'Message: <br><textarea name="post_content" /></textarea><br>
-                <input type="submit" value="Create Topic" />
+                <input type="submit" class="submission" value="Create Topic" />
                 </form>';
         }
       }
@@ -125,7 +125,7 @@
         $sql = "COMMIT;";
         $result = $conn->query($sql);
 
-        echo 'You have successfully create <a href="/topic.php?id=' . $topicid . '">your new topic</a>.';
+        echo '<script type="text/javascript>location.href = "/topic.php?id=' . $topicid . '";</script>';
       }
     }
   }
