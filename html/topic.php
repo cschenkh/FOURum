@@ -77,9 +77,9 @@
           echo '<div id="replyBlock" class="replyWrapper" style="display: none">
                   <div style="height: 10%; width: 100%;"><h4>Reply:</h4></div>
                   <form method="post" action="/reply.php?id=' . $_GET['id'] . '">
-                  <textarea name="reply-content" /> </textarea>
-                  <input type="submit" value="Reply" />
-                  </form>;
+                    <textarea name="reply-content" /></textarea>
+                    <input id="submitReply" type="submit" value="Reply" />
+                  </form>
                 </div>';
         }
       }
@@ -92,7 +92,7 @@
 
   function writeReply() {
     document.getElementById("replyDiv").style.display = "none";
-    document.getElementById("replyBlock").style.display = "inline";
+    document.getElementById("replyBlock").style.display = "inline-block";
   }
 
 </script>

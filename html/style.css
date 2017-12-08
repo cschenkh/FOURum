@@ -72,6 +72,14 @@ body {
   text-decoration: none;
 }
 
+.replyWrapper {
+  margin: 1em;
+  padding: 0.5em;
+  border: 1px solid #404040;
+  border-radius 12px;
+  background-color: #E0E0E0;
+}
+
 #footer {
   clear: both;
 }
