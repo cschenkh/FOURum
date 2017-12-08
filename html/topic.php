@@ -71,7 +71,7 @@
         if ($_SESSION['signed_in']) {
         // Add the content creation button
           echo '<div style="float: right" class="createContent">
-                  <a id="replyDiv" class="createContentText" onclick="writeReply()" href="/reply.php?id=' . $_GET['id'] . '">Write a Reply</a>
+                  <a id="replyDiv" class="createContentText" onclick="writeReply()">Write a Reply</a>
                 </div>'; 
 
           echo '<div id="replyBlock" class="replyWrapper" style="display: none">
