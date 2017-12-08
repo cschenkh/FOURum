@@ -68,7 +68,10 @@
 
         echo '</table>';
 
-        echo '<button type="button" class="createContent" id="createPost">Create Post</button>"
+        // Add the content creation button
+        echo '<div style="float: right" class="createContent">
+                <a class="createContentText" href="/reply.php?id=' . $_GET['id'] . '">Write a Reply</a>
+              </div>'; 
       }
     }
   }
