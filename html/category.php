@@ -49,6 +49,11 @@
         echo 'The topics could not be displayed, please try again.';
       }
       else {
+        // Add the content creation button
+        echo '<div class="createContent">
+                <a class="createContentText" href="/create_topic.php">Create New Topic</a>
+              </div>';
+        
         // prep the table
         echo '<table border="1">
               <tr>

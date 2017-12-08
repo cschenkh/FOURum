@@ -29,12 +29,3 @@
     </div>
     <h1>FOURum</h1>
       <div id="wrapper">
-      <div id="menu">
-        <a class="item" href="/create_topic.php">Create a topic</a> -
-        <a class="item" href="/create_cat.php">Create a category</a>
-
-        <div id="userbar">
-      
-        </div>
-      </div>
-
