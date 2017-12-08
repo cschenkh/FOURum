@@ -86,6 +86,7 @@
     }
   }
 
+  include 'footer.php';
 ?>
 
 <script>
@@ -93,6 +94,7 @@
   function writeReply() {
     document.getElementById("replyDiv").style.display = "none";
     document.getElementById("replyBlock").style.display = "inline-block";
+    window.scrollTo(0, document.body.scrollHeight);
   }
 
 </script>

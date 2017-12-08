@@ -4,10 +4,10 @@
 
   if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // form hasn't been posted yet, so display it
-    echo '<form method="post" action="">
-        Category name: <br><input type="text" name="cat_name" /><br>
-        Category description: <br><textarea name="cat_description" /></textarea><br>
-        <input type="submit" value="Add Category" />
+    echo '<form class="createForm" method="post" action="">
+        Category name: <input class="regField" type="text" name="cat_name" /><br>
+        Category description: <textarea name="cat_description" /></textarea><br>
+        <input class="submission" type="submit" value="Add Category" />
         </form>';
   }
   else {

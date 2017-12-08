@@ -18,12 +18,12 @@
       
       <?php
         if ($_SESSION['signed_in']) {
-          echo '<a class="nav-item" style="float: right; border-right: none;" href="signout.php">Sign Out</a>';
-          echo '<a class="nav-item" style="float: right"> Hello, ' . $_SESSION['user_name'] . '</a>';
+          echo '<a class="nav-hud" style="float: right; border-right: none;" href="signout.php">Sign Out</a>';
+          echo '<a class="nav-hud" style="float: right"> Hello, ' . $_SESSION['user_name'] . '</a>';
         }
         else {
-          echo '<a class="nav-item" style="float: right; border-right: none;" href="/signup.php">Sign Up</a>
-            <a class="nav-item" style="float: right" href="/signin.php">Sign In</a>';
+          echo '<a class="nav-hud" style="float: right; border-right: none;" href="/signup.php">Sign Up</a>
+            <a class="nav-hud" style="float: right" href="/signin.php">Sign In</a>';
         }
       ?>
     </div>

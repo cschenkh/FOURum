@@ -22,7 +22,8 @@
                       NOW(), 
                       " . $conn->quote($_GET['id']) . ", 
                       " . $_SESSION['user_id'] . ",
-                      " . $_SESSION['user_name'] . ")";
+                      " . $conn->quote($_SESSION['user_name']) . ")";
+      }
 
       try {
         $conn->exec($sql);
