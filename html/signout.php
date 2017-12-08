@@ -1,8 +1,8 @@
 <?php
-  $_SESSION = array();
-
   include 'connect.php';
   include 'header.php';
+
+  $_SESSION = array();
 
   echo 'You have been signed out.';
   echo '<br /><br />';
