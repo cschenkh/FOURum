@@ -15,8 +15,17 @@
   <body>
     <div id="nav-bar">
       <a class="nav-item" href="/index.php">Home</a>
-      <a class="nav-item" style="float: right" href="/signin.php">Log In</a>
-      <a class="nav-item" style="float: right" href="/signup.php">Sign Up</a>
+      
+      <?php
+        if ($_SESSION['signed_in']) {
+          echo '<a class="nav-item" style="float: right" href="signout.php">Sign Out</a>'
+          echo '<a class="nav-item" style="float: right"> Hello, ' . $_SESSION['user_name'] . '</a>';
+        }
+        else {
+          echo '<a class="nav-item" style="float: right; border-right: none;" href="/signup.php">Sign Up</a>
+            <a class="nav-item" style="float: right" href="/signin.php">Sign In</a>'
+        }
+      ?>
     </div>
     <h1>FOURum</h1>
       <div id="wrapper">
