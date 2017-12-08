@@ -62,7 +62,7 @@
     }
     else {
       // start the transaction
-      $query = "BEGIN WORK";
+      $query = "BEGIN";
       $result = $conn->query($query);
 
       if (!$result) {
@@ -77,7 +77,7 @@
                          topic_date,
                          topic_cat,
                          topic_by)
-                  VALUES('" . $conn->quote($_POST['topic_subject']) . "', 
+                  VALUES(" . $conn->quote($_POST['topic_subject']) . ", 
                         NOW(),
                         " . $conn->quote($_POST['topic_cat']) . ", 
                         " . $_SESSION['user_id'] . "
@@ -86,7 +86,7 @@
           $conn->exec($sql);
         } catch (PDOException $e) {
           // something went wrong, display the error
-          echo 'An error occured while inserting your post. Please try again later. ' . mysql_error();
+          echo 'An error occured while inserting your post. Please try again later. ' . $e->getMessage();
           
           $sql = "ROLLBACK;";
           $result = $conn->query($sql);
@@ -97,22 +97,21 @@
         
         $topicid = $conn->lastInsertId();
 
-        $sql = "INSET INTO
+        $sql = "INSERT INTO
                 posts(post_content,
                       post_date,
                       post_topic,
                       post_by)
                 VALUES
-                  ('" . $conn->quote($_POST['post_content']) . "', 
+                  (" . $conn->quote($_POST['post_content']) . ", 
                   NOW(),
                   " . $topicid . ", 
-                  " . $_SESSION['user_id'] . "
-                )";
+                  " . $_SESSION['user_id'] . ")";
 
         try {
           $conn->exec($sql);
         } catch (PDOException $e) {
-          echo 'An error occured while inserting your post. Try again later. ' . mysql_error();
+          echo 'An error occured while inserting your post. Try again later. ' . $e->getMessage();
           $sql = "ROLLBACK;";
           $result = $conn->query($sql);
 

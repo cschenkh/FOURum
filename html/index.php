@@ -19,7 +19,7 @@
       $sql = "SELECT
                 cat_id,
                 cat_name,
-                cat_description,
+                cat_description
               FROM
                 categories";
 
@@ -35,10 +35,11 @@
       foreach ($result as $row) {
         echo '<tr>';
         echo '<td class="leftpart">';
-        echo '<h3><a href="category.php?id">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
+        echo '<h3><a href="category.php?id=' . $row['cat_id'] . '">' . $row['cat_name'] . 
+            '</a></h3>' . $row['cat_description'];
         echo '</td>';
         echo '<td class="rightpart">';
-        echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
+        echo '<a href="topic.php?id="">Topic subject</a> at ';
         echo '</td>';
         echo '</tr>';
       }

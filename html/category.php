@@ -38,7 +38,7 @@
                 topic_id,
                 topic_subject,
                 topic_date,
-                topic_cat,
+                topic_cat
               FROM
                 topics
               WHERE
@@ -60,7 +60,7 @@
           echo '<tr>';
           echo '<td class="leftpart">';
           echo '<h3><a href="topic.php?id=' . $row['topic_id'] . '">' . $row['topic_subject'] . '</a></h3>';
-          echo '</td>';
+          echo '</td><td class="rightpart">';
           echo date('d-m-Y', strtotime($row['topic_date']));
           echo '</td>';
           echo '</tr>';
@@ -69,5 +69,4 @@
     }
   }
 
-  include 'footer.php';
 ?>

@@ -4,15 +4,15 @@
   if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // form hasn't been posted yet, so display it
     echo '<form method="post" action="">
-        Category name: <input type="text" name="cat_name" />
-        Category description: <textarea name="cat_description" /></textarea>
-        <input type="submit" value="Add category" />
+        Category name: <br><input type="text" name="cat_name" /><br>
+        Category description: <br><textarea name="cat_description" /></textarea><br>
+        <input type="submit" value="Add Category" />
         </form>';
   }
   else {
     // The form HAS been posted so let's save it
     $sql = "INSERT INTO categories(cat_name, cat_description)
-              VALUES('', " . $conn->quote($_POST['cat_name']) . ", " . 
+              VALUES(" . $conn->quote($_POST['cat_name']) . ", " . 
                   $conn->quote($_POST['cat_description']) . ")";
 
     try {
