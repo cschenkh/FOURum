@@ -58,6 +58,7 @@ body {
 
 .createContent {
   background-color: #AA1515;
+  margin-top: 0.1em;
   margin-bottom: 0.1em;
   float: left;
   width: 20%;

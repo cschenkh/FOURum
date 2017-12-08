@@ -68,12 +68,31 @@
 
         echo '</table>';
 
+        if ($_SESSION['signed_in']) {
         // Add the content creation button
-        echo '<div style="float: right" class="createContent">
-                <a class="createContentText" href="/reply.php?id=' . $_GET['id'] . '">Write a Reply</a>
-              </div>'; 
+          echo '<div style="float: right" class="createContent">
+                  <a id="replyDiv" class="createContentText" onclick="writeReply()" href="/reply.php?id=' . $_GET['id'] . '">Write a Reply</a>
+                </div>'; 
+
+          echo '<div id="replyBlock" class="replyWrapper" style="display: none">
+                  <div style="height: 10%; width: 100%;"><h4>Reply:</h4></div>
+                  <form method="post" action="/reply.php?id=' . $_GET['id'] . '">
+                  <textarea name="reply-content" /> </textarea>
+                  <input type="submit" value="Reply" />
+                  </form>;
+                </div>';
+        }
       }
     }
   }
 
 ?>
+
+<script>
+
+  function writeReply() {
+    document.getElementById("replyDiv").style.display = "none";
+    document.getElementById("replyBlock").style.display = "inline";
+  }
+
+</script>

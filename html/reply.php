@@ -33,7 +33,7 @@
         return;
       }
       
-      echo 'Your reply was submitted! See it <a href="topic.php>id=' . htmlentities($_GET['id']) . '">here</a>.';
+      echo '<script type="text/javascript">location.href = "/topic.php?id=' . $_GET['id'] . '";</script>';
     }
   }
 
