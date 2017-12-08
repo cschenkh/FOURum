@@ -17,7 +17,6 @@
   }
   else {
     if($numResults->fetchColumn() <= 0) {
-      echo 'No categories defined yet.';
     }
     else {
       $sql = "SELECT
