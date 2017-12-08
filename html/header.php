@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
   </head>
   <body>
-    <h1>My forum</h1>
+    <h1>FOURum</h1>
       <div id="wrapper">
       <div id="menu">
         <a class="item" href="/index.php">Home</a> -

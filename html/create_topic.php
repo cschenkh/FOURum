@@ -76,12 +76,13 @@
                   topics(topic_subject,
                          topic_date,
                          topic_cat,
-                         topic_by)
+                         topic_by_id,
+                         topic_by_name)
                   VALUES(" . $conn->quote($_POST['topic_subject']) . ", 
                         NOW(),
                         " . $conn->quote($_POST['topic_cat']) . ", 
-                        " . $_SESSION['user_id'] . "
-                      )";
+                        " . $_SESSION['user_id'] . ",
+                        " . $_SESSION['user_name'] . ")";
         try {
           $conn->exec($sql);
         } catch (PDOException $e) {
@@ -101,12 +102,14 @@
                 posts(post_content,
                       post_date,
                       post_topic,
-                      post_by)
+                      post_by_id,
+                      post_by_name)
                 VALUES
                   (" . $conn->quote($_POST['post_content']) . ", 
                   NOW(),
                   " . $topicid . ", 
-                  " . $_SESSION['user_id'] . ")";
+                  " . $_SESSION['user_id'] . ",
+                  " . $_SESSION['user_name'] . ")";
 
         try {
           $conn->exec($sql);

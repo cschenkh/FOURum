@@ -16,11 +16,13 @@
                 posts(post_content,
                       post_date,
                       post_topic,
-                      post_by)
+                      post_by_id,
+                      post_by_name)
               VALUES ('" . $_POST['reply-content'] . "', 
                       NOW(), 
                       " . $conn->quote($_GET['id']) . ", 
-                      " . $_SESSION['user_id'] . ")";
+                      " . $_SESSION['user_id'] . ",
+                      " . $_SESSION['user_name'] . ")";
 
       try {
         $conn->exec($sql);
