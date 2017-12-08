@@ -23,19 +23,18 @@
                       " . $conn->quote($_GET['id']) . ", 
                       " . $_SESSION['user_id'] . ",
                       " . $conn->quote($_SESSION['user_name']) . ")";
-      }
-
-      try {
-        $conn->exec($sql);
-      } catch (PDOException $e) {
-        echo 'Your reply was not able to be submitted! Please try again later.';
-        
-        include 'footer.php';
-        return;
-      }
-      
-      echo '<script type="text/javascript">location.href = "/topic.php?id=' . $_GET['id'] . '";</script>';
     }
+
+    try {
+      $conn->exec($sql);
+    } catch (PDOException $e) {
+      echo 'Your reply was not able to be submitted! Please try again later.';
+      
+      include 'footer.php';
+      return;
+    }
+      
+    echo '<script type="text/javascript">location.href = "/topic.php?id=' . $_GET['id'] . '";</script>';
   }
 
   include 'footer.php';

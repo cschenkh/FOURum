@@ -2,6 +2,11 @@
   include 'connect.php';
   include 'header.php';
 
+  // table top to add a category
+  echo '<div class="createContent">
+          <a class="createContentText" href="/create_cat.php">Create New Category</a>
+        </div>';
+
   $sqlNumFound = "SELECT
                     COUNT(*)
                   FROM
@@ -23,12 +28,7 @@
                 categories";
 
      $result = $conn->query($sql);
-
-      // table top to add a category
-      echo '<div class="createContent">
-              <a class="createContentText" href="/create_cat.php">Create New Category</a>
-            </div>';
-
+      
       // prepare the table
       echo '<table border="1">
           <tr>
