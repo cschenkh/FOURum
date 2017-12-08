@@ -14,7 +14,9 @@
   </head>
   <body>
     <div id="nav-bar">
-      <a class="nav-item" style="width:15%" href="/index.php">Home</a>
+      <a class="nav-item" href="/index.php">Home</a>
+      <a class="nav-item" style="float: right" href="/signin.php">Log In</a>
+      <a class="nav-item" style="float: right" href="/signup.php">Sign Up</a>
     </div>
     <h1>FOURum</h1>
       <div id="wrapper">

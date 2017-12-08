@@ -1,10 +1,14 @@
+* {
+  margin: 0;
+}  
+
 body {
-  background-color: #4E4E4E;
+  background-color: #F0F0F0;
   text-align: center;         /* make sure IE centers the page too */
 }
 
 #wrapper {
-  width: 900px;
+  width: 100%;
   margin: 0 auto;             /* center the page */
 }
 
@@ -22,7 +26,7 @@ body {
   float: left;
   border: 1px solid #000;
   border-bottom: none;        /* avoid a double border */
-  clear: both;                /* clear:both makes sure the content div doesn't float next to this one but stays under it */
+  clear: both;
   width:100%;
   height:20px;
   padding: 0 30px;
@@ -36,14 +40,19 @@ body {
 }
 
 #nav-bar {
-  background-color:#E88000;
-  height: 10%;
+  background-color:#AA1515;
+  height: 2.4em;
+  width: 100%;
 }
 
-#nav-item {
-  color: #000000;
-  font-style: italic;
-  font-size: 2.5em;
+.nav-item {
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 2em;
+  float: left;
+  border-left: 2px solid #FFFFFF;
+  border-right: 2px solid #FFFFFF;
+  text-decoration: none;
 }
 
 #userbar {
