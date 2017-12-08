@@ -1,5 +1,6 @@
 <?php // create_cat.php
   include 'connect.php';
+  include 'header.php';
 
   if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // form hasn't been posted yet, so display it
@@ -25,4 +26,5 @@
     echo 'New category successfully added.';
   }
 
+  include 'footer.php';
 ?>
