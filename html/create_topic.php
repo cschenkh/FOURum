@@ -54,7 +54,7 @@
 
           echo '</select><br>';
 
-          echo 'Message: <br><textarea name="post_content" /></textarea><br>
+          echo 'First Post: <br><textarea name="post_content" /></textarea><br>
                 <input type="submit" class="submission" value="Create Topic" />
                 </form>';
         }
@@ -125,7 +125,7 @@
         $sql = "COMMIT;";
         $result = $conn->query($sql);
 
-        echo '<script type="text/javascript>location.href = "/topic.php?id=' . $topicid . '";</script>';
+        echo '<script type="text/javascript">location.href = "/topic.php?id=' . $topicid . '";</script>';
       }
     }
   }

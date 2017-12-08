@@ -6,7 +6,7 @@
     // form hasn't been posted yet, so display it
     echo '<form class="createForm" method="post" action="">
         Category name: <input class="regField" type="text" name="cat_name" /><br>
-        Category description: <textarea name="cat_description" /></textarea><br>
+        Category description: <br><textarea name="cat_description" /></textarea><br>
         <input class="submission" type="submit" value="Add Category" />
         </form>';
   }
@@ -25,7 +25,7 @@
 
     $categoryId = $conn->lastInsertId();
 
-    echo '<script type="text/javascript>location.href = "/category.php?id=' . $categoryId . '";</script>';
+    echo '<script type="text/javascript">location.href = "/category.php?id=' . $categoryId . '";</script>';
   }
 
   include 'footer.php';
