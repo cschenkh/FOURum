@@ -23,7 +23,7 @@
               FROM
                 categories";
 
-      $result = $conn->query($sql);
+     $result = $conn->query($sql);
 
       //prepare the table
       echo '<table border="1">
@@ -33,13 +33,38 @@
           </tr>'; 
 
       foreach ($result as $row) {
+
+        $sqlTopic = "SELECT
+                      topic_id,
+                      topic_subject,
+                      topic_date
+                    FROM
+                      topics
+                    WHERE
+                      topic_cat = " . $row['cat_id'] . "
+                    ORDER BY
+                      topic_id
+                      DESC
+                    LIMIT
+                      0, 1";
+
+        $topicRes = $conn->query($sqlTopic);
+
         echo '<tr>';
         echo '<td class="leftpart">';
         echo '<h3><a href="category.php?id=' . $row['cat_id'] . '">' . $row['cat_name'] . 
             '</a></h3>' . $row['cat_description'];
         echo '</td>';
         echo '<td class="rightpart">';
-        echo '<a href="topic.php?id="">Topic subject</a> at ';
+
+        if ($topicRes) {
+          if ($topicInfo = $topicRes->fetch()) {
+            echo '<a href="topic.php?id=' . $topicInfo['topic_id'] . '">' . $topicInfo['topic_subject'] . '</a><br>';
+            echo 'Last Topic Update: '
+            echo date('m-d-Y', strtotime($topicInfo['topic_date']));
+          }
+        }
+
         echo '</td>';
         echo '</tr>';
       }

@@ -2,7 +2,7 @@
   include 'connect.php';
   include 'header.php';
 
-  echo '<h2>Crate a topic</h2>';
+  echo '<h2>Create a topic</h2>';
   if ($_SESSION['signed_in'] == false) {
     // the user is not signed in
     echo 'Sorry, you have to be <a href="/forum/signin.php">signed in</a> to create a topic.';
@@ -44,7 +44,7 @@
           $result = $conn->query($sql);
 
           echo '<form method="post" action="">
-                Subject: <input type="text" name="topic_subject" />
+                Subject: <br><input type="text" name="topic_subject" /><br>
                 Category:';
           echo '<select name="topic_cat">';
 
@@ -52,10 +52,10 @@
             echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
           }
 
-          echo '</select>';
+          echo '</select><br>';
 
-          echo 'Message: <textarea name="post_content" /></textarea>
-                <input type="submit" value="Create topic" />
+          echo 'Message: <br><textarea name="post_content" /></textarea><br>
+                <input type="submit" value="Create Topic" />
                 </form>';
         }
       }
@@ -82,12 +82,12 @@
                         NOW(),
                         " . $conn->quote($_POST['topic_cat']) . ", 
                         " . $_SESSION['user_id'] . ",
-                        " . $_SESSION['user_name'] . ")";
+                        " . $conn->quote($_SESSION['user_name']) . ")";
         try {
           $conn->exec($sql);
         } catch (PDOException $e) {
           // something went wrong, display the error
-          echo 'An error occured while inserting your post. Please try again later. ' . $e->getMessage();
+          echo 'An error occured while inserting your topic. Please try again later. ' . $e->getMessage();
           
           $sql = "ROLLBACK;";
           $result = $conn->query($sql);
@@ -109,7 +109,7 @@
                   NOW(),
                   " . $topicid . ", 
                   " . $_SESSION['user_id'] . ",
-                  " . $_SESSION['user_name'] . ")";
+                  " . $conn->quote($_SESSION['user_name']) . ")";
 
         try {
           $conn->exec($sql);
@@ -125,7 +125,7 @@
         $sql = "COMMIT;";
         $result = $conn->query($sql);
 
-        echo 'You have successfully create <a href="topic.php"?id=' . $topicid . '">your new topic</a>.';
+        echo 'You have successfully create <a href="/topic.php?id=' . $topicid . '">your new topic</a>.';
       }
     }
   }

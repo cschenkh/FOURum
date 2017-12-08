@@ -9,11 +9,11 @@
     /*the form hasn't been posted yet, display it
     note that the action="" will cause the form to post to the same page it is on */
     echo '<form method="post" action="">
-        Username: <input type="text" name="user_name" />
-        Password: <input type="password" name="user_pass">
-        Password again: <input type="password" name="user_pass_check">
-        E-mail: <input type="email" name="user_email">
-        <input type="submit" value="Add category" />
+        Username: <br><input type="text" name="user_name" /><br>
+        Password: <br><input type="password" name="user_pass"><br>
+        Password again: <br><input type="password" name="user_pass_check"><br>
+        E-mail: <br><input type="email" name="user_email"><br>
+        <input type="submit" value="Sign Up" />
         </form>';
   }
   else {

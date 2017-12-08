@@ -14,7 +14,7 @@
   // Check if query succeeds
   if ($res = $conn->query($sql)) {  
     // Check if there aren't any columns representing the number of hits the SELECT statement would have found
-    if ($conn->fetchColumn() <= 0) {
+    if ($res->fetchColumn() <= 0) {
       echo 'This category does not exist!';
     }
     // Now that we know we have things we can select, make the real query
@@ -30,7 +30,7 @@
 
       // Iterate through the results and list them on the page as html
       foreach ($conn->query($sql) as $row) {
-        echo '<h2>Topics in ' . $row['cat_name'] . ' category</h2>';
+        echo '<h2>Topics in ' . $row['cat_name'] . '</h2>';
       }
 
       // Now query for topics
