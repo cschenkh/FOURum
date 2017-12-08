@@ -1,26 +1,23 @@
 # FOURum
-I don't fully know where I want to go with this app / project as of right now,
-but so far as I know, I mostly want to learn the dynamic web programming that
-goes into building a submission based web page.
-## Milestones
-- Display a webpage that can display text
-- Add growable modules that can be repeated to display a dynamic number of posts (from files?)
-- Connect to database (non-relational?) to get display content
-- Add depth to webpage so that there are self-contained modules of separate documents
-## Technologies Used
-- Web Server (Apache?)
+This text based web forum has the capability to support multiple users creating topics of conversations and replying back and forth.
+The posts as well as all relevant information is stored in a database allowing persistant storage, and interconnected tables of
+information on the server's side.
+## Technologies / Languages Used
+- Web Server - Apache2
 - Database
-	- sqlite3 (http://sqlite.org/docs.html)
-## Currently TODO:
-- Everything :)
-	- Try out Web Servers and which one would be best
-	- Will probably need to serve up PHP / Python / JS
-	- Look into non-relational databases
-	- Finish TODO list
+	- MySQL
+- PHP 5.6
+- Javascript
+- HTML5
+- SQL
 ## Completed:
-- Picked a name? (remove)
+- Multi-User login
+- Creation of Categories
+- Creation of Topics
+- Creation of Posts
+- Able to respond to posts and see who posted what
 ## Bugs / Misc Unplanned Features:
-- Nobody can say anything bad about my forum if it doesn't exist!
+- None to my current knowledge (Certainly not bug free though)
 
 ## Planned Extra Features:
 #### Don't worry about this section. It is mostly personal fluff that would improve QOL, not functionality or usability

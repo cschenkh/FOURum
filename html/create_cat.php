@@ -2,7 +2,11 @@
   include 'connect.php';
   include 'header.php';
 
-  if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+  if ($_SESSION['signed_in'] == false) {
+    // the user is not signed in
+    echo 'Sorry, you have to be <a href="/signin.php">signed in</a> to create a topic.';
+  }
+  else if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // form hasn't been posted yet, so display it
     echo '<form class="createForm" method="post" action="">
         Category name: <input class="regField" type="text" name="cat_name" /><br>
