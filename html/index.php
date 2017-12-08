@@ -24,7 +24,12 @@
 
      $result = $conn->query($sql);
 
-      //prepare the table
+      // table top to add a category
+      echo '<div class="createContent">
+              <a href="/create_cat.php">Create New Category</a>
+            </div>'
+
+      // prepare the table
       echo '<table border="1">
           <tr>
           <th>Category</th>
