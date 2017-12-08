@@ -66,6 +66,8 @@
           echo '</td>';
           echo '</tr>';
         }
+
+        echo '</table>';
       }
     }
   }
