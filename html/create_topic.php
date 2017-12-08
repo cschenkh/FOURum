@@ -54,7 +54,7 @@
 
           echo '</select><br>';
 
-          echo 'First Post: <br><textarea name="post_content" /></textarea><br>
+          echo 'First Post: <br><textarea class="writtenSub" name="post_content" /></textarea><br>
                 <input type="submit" class="submission" value="Create Topic" />
                 </form>';
         }

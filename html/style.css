@@ -58,8 +58,8 @@ body {
 
 .nav-hud {
   font-size: 100%;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
 }
 
 .createContent {
@@ -91,7 +91,7 @@ body {
   margin-top: 1em;
   margin-bottom: 1em;
   width: 95%;
-  height: 15em;
+  height: 16em;
   border: 1px solid #000000;
   border-radius: 5px;
   text-align: left;
@@ -106,7 +106,7 @@ body {
 
 .submission {
   float: right;
-  width: 40%;
+  width: 30%;
   margin-top: 2%;
 }
 
@@ -198,9 +198,13 @@ h3 {margin: 0; padding: 0;}
   float: right;
 }
 
-textarea {
+textarea, .writtenSub {
   float: left;
   margin-left: 8em;
   width: 500px;
   height: 200px;
+}
+
+.writtenSub {
+  width: 80%;
 }
