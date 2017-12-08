@@ -67,6 +67,8 @@
         }
 
         echo '</table>';
+
+        echo '<button type="button" class="createContent" id="createPost">Create Post</button>"
       }
     }
   }

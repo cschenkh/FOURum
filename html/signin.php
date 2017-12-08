@@ -93,7 +93,7 @@
 
               //echo 'Welcome, ' . $_SESSION['user_name'] . '. <a href="index.php">Proceed to the forum overview</a>.';
 
-              echo '<script type="text/javascript">location.href = \'/index.php\';<script>';
+              echo '<script type="text/javascript">location.href = \'/index.php\';</script>';
 
             }
           }

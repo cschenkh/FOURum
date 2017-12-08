@@ -35,6 +35,17 @@ body {
   background-color: #009FC1;
 }
 
+#nav-bar {
+  background-color:#E88000;
+  height: 10%;
+}
+
+#nav-item {
+  color: #000000;
+  font-style: italic;
+  font-size: 2.5em;
+}
+
 #userbar {
   background-color: #fff;
   float: right;

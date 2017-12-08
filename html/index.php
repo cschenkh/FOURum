@@ -1,5 +1,4 @@
-<?php
-//create_cat.php
+<?php //index.php
   include 'connect.php';
   include 'header.php';
 

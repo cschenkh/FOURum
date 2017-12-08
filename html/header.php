@@ -9,10 +9,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="description." />
     <meta name="keywords" content="key, words" />
-    <title>PHP-SQLite forum</title>
+    <title>PHP-MySQL forum</title>
     <link rel="stylesheet" href="style.css" type="text/css">
   </head>
   <body>
+    <div id="nav-bar">
+      <a class="nav-item" style="width:15%" href="/index.php">Home</a>
+    </div>
     <h1>FOURum</h1>
       <div id="wrapper">
       <div id="menu">
