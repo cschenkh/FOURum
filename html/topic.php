@@ -52,7 +52,7 @@
         echo '<table border="1">
               <tr>
                 <th>Author</th>
-                <th>Reply</th>
+                <th>Post</th>
               </tr>';
 
         foreach ($result as $row) {

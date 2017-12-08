@@ -60,7 +60,7 @@
         if ($topicRes) {
           if ($topicInfo = $topicRes->fetch()) {
             echo '<a href="topic.php?id=' . $topicInfo['topic_id'] . '">' . $topicInfo['topic_subject'] . '</a><br>';
-            echo 'Last Topic Update: '
+            echo 'Last Topic Update: ';
             echo date('m-d-Y', strtotime($topicInfo['topic_date']));
           }
         }
