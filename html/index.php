@@ -26,7 +26,7 @@
 
       // table top to add a category
       echo '<div class="createContent">
-              <a href="/create_cat.php">Create New Category</a>
+              <a class="createContentText" href="/create_cat.php">Create New Category</a>
             </div>'
 
       // prepare the table
